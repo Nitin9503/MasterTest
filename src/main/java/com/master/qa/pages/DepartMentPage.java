@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.master.qa.base.TestBase;
 
-public class DepartMentPage<WebElements> extends TestBase{
+public class DepartMentPage extends TestBase{
 	
 	public int depaRowSize1;
 	@FindBy(id="addNew")
@@ -36,7 +36,7 @@ public class DepartMentPage<WebElements> extends TestBase{
 	WebElement saveAndCloseBtn;
 	
 	@FindBy(xpath="//div[@id='departmentMainGrid']//tbody/tr")
-	WebElements depaRowSize;
+	WebElement depaRowSize;
 	
 	public DepartMentPage(){
 		PageFactory.initElements(driver, this);

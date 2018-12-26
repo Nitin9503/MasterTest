@@ -57,13 +57,16 @@ public class DepartMentPageTest extends TestBase{
 	
 	@Test(priority=1)
 	public void depaNameAndCodeTest() throws InterruptedException{
+		 Thread.sleep(2000);
 		int rowCount=reader.getRowCount("Department_data");
 		 for(int rowNum=2; rowNum<=rowCount; rowNum++)
 		 {
 			 Thread.sleep(2000);
 			 try {
 				if(AddNewDepBtn.isDisplayed()){
-					departMentPage=homePage.validateNewDepart();
+				   depaSize=departMentPage.validateAddedDepaRow();
+				   System.out.println(depaSize);
+				   departMentPage=homePage.validateNewDepart();
 					
 				}
 			} catch (Exception e) {
@@ -76,6 +79,7 @@ public class DepartMentPageTest extends TestBase{
 			    String departMentName = reader.getCellData("Department_data", "DepartMent_Name", rowNum);
 		        System.out.println(departMentName);
 		departMentPage.depaNameAndCode(dapaMentCode, departMentName);
+		Thread.sleep(2000);
 		int depaSize1=departMentPage.validateAddedDepaRow();
 	    System.out.println(depaSize1);
 	    Assert.assertEquals(depaSize1, depaSize+1, "department not added hence mot match");
