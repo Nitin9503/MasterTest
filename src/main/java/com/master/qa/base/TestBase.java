@@ -26,10 +26,7 @@ public class TestBase {
 		} catch(IOException e){
 			e.printStackTrace();
 		}
-		
 	}
-	
-	
 	public static void initialization(){
 		String browserName = prop.getProperty("browser");
 		
@@ -45,7 +42,7 @@ public class TestBase {
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_tIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
-		driver.get(prop.getProperty("url"));
+		driver.get(prop.getProperty("departUrl"));
 	}
     
 }

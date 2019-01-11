@@ -120,7 +120,7 @@ public class ItemMaster {
          //div[@id='deptInfo']/div[@id='second']/p/input
          
          
-         Thread.sleep(3000); 
+         //Thread.sleep(3000); 
          //driver.findElement(By.xpath("html/body/div[8]/div[1]/div")).click();
          driver.findElement(By.xpath("//input[@id='addNew' and @onclick='addNewItem()']")).click();
          driver.findElement(By.name("Item Number")).sendKeys("D00001");

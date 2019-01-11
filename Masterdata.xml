@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ClientDataAddInMaster">
+<listeners>
+  		    
+  		    <listener class-name = "com.master.qa.util.CustomListener" />
+  		      
+  		</listeners>
+ <test name="ClientDataTest">
+ <classes>
+       <class name="com.master.qa.testcases.DepartMentPageTest" /> 
+        <class name="com.master.qa.testcases.CategoryPageTest" /> 
+      <class name="com.master.qa.testcases.ItemsPageTest" />
+ </classes>
+ </test>
+</suite>

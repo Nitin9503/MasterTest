@@ -71,10 +71,7 @@ public class CategoryPage extends TestBase{
 	    return CateWindowTitle.isDisplayed();
 	    
 	}
-	
-	
 	public void validateAddNewCateData(String cateCode, String cateName, String depaName) throws InterruptedException{
-		
 		addNewCategory.click();
 		Cstaus.click();
 		categoryCode.sendKeys(cateCode);
@@ -82,10 +79,10 @@ public class CategoryPage extends TestBase{
 		depaBrowse.click();
 		Thread.sleep(1000);
 		System.out.println(depaName);
-		 for(int i=1; i<=3; i++){
+		 for(int i=1; i<3; i++){
         	 System.out.println("it enter into for loop "+i);
         	 try {
-        		 Thread.sleep(1000);
+        		// Thread.sleep(1000);
 				if(driver.findElement(By.xpath("//div[@id='DepartmentListGrid']//td[text()='"+depaName+"']")).isDisplayed()){
 					Thread.sleep(1000);
 					System.out.println("it enter into try block");
@@ -95,23 +92,30 @@ public class CategoryPage extends TestBase{
 				
 			} catch (Exception e) {
 				    System.out.println("it enter into try block");
-				    //cateNextListBtn.click();
-				    //e.printStackTrace();
 				    try {
-				    	
-						if(cateNextListBtn.isDisplayed()){
+				    	if(cateNextListBtn.isDisplayed()){
 							 cateNextListBtn.click();
-						     	
+							 if(driver.findElement(By.xpath("//div[@id='DepartmentListGrid']//td[text()='"+depaName+"']")).isDisplayed()){
+									Thread.sleep(1000);
+									System.out.println("it enter into try block");
+									driver.findElement(By.xpath("//div[@id='DepartmentListGrid']//td[text()='"+depaName+"']")).click();
+									break;
+								 }	
+							 
 						}
 					} catch (Exception e2) {
 						catePreviousListBtn.click();
+						if(driver.findElement(By.xpath("//div[@id='DepartmentListGrid']//td[text()='"+depaName+"']")).isDisplayed()){
+							Thread.sleep(1000);
+							System.out.println("it enter into try block");
+							driver.findElement(By.xpath("//div[@id='DepartmentListGrid']//td[text()='"+depaName+"']")).click();
+							break;
+						 }
 						// TODO: handle exception
 					}
 			}
         	 
          }
-		//driver.findElement(By.xpath("//div[@id='DepartmentListGrid']//td[text()='"+depaName+"']")).click();
-		//depaSelect.click();
 		Thread.sleep(1000);
 		depaOkBtn.click();
 		cateSaveCloseBtn.click();

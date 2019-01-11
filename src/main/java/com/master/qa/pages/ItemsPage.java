@@ -1,5 +1,7 @@
 package com.master.qa.pages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +11,7 @@ import static com.master.qa.testcases.ItemsPageTest.depaName;
 import static com.master.qa.testcases.ItemsPageTest.CategoryName;
 
 import com.master.qa.base.TestBase;
+import com.master.qa.util.TestUtil;
 
 public class ItemsPage extends TestBase{
       
@@ -109,7 +112,8 @@ public class ItemsPage extends TestBase{
 	}
 	public void addItemData(String ItemNo, String ItemBarCode, String ItemDescription, String ItemExtenDescri, String itemsearchCode, String fbLink, String price, String cost, String depaName, String CategoryName ) throws InterruptedException{
 		addnewItemBtn.click();
-		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
+		//Thread.sleep(2000);
 		itemNumber.sendKeys(ItemNo);
 		barcodeNumber.sendKeys(ItemBarCode);
 		description.sendKeys(ItemDescription);
@@ -120,16 +124,19 @@ public class ItemsPage extends TestBase{
 		itemType.click();
 		itemTypeClick.click();
 		DepaBrowse.click();
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		DepaListCount.click();
 		DepaListCountclick.click();
-		Thread.sleep(2000);
+		//Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		 for(int i=1; i<=3; i++){
         	 System.out.println("it enter into for loop "+i);
         	 try {
         		    System.out.println(depaName);
 				if(driver.findElement(By.xpath("//div[@id='DepartmentGrid']//td[text()='"+depaName+"']")).isDisplayed()){
-					Thread.sleep(2000);
+					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+					//Thread.sleep(1000);
 					System.out.println("it enter into try block");
 					//driver.findElement(By.xpath("//div[@id='DepartmentGrid']//td[text()='Beverage1']")).click();
 					driver.findElement(By.xpath("//div[@id='DepartmentGrid']//td[text()='"+depaName+"']")).click();
@@ -138,17 +145,19 @@ public class ItemsPage extends TestBase{
 			} catch (Exception e) {
 				    System.out.println("it enter into first catch block");
 				    //depaListNextbtn.click();
-				    //e.printStackTrace();
+				    e.printStackTrace();
 				    try {
 				    	System.out.println("it enter into try block of  catch block");
 						if(depaListNextbtn.isDisplayed()){
 							System.out.println("it enter into if condition and shown depaListNextbtn");
-							Thread.sleep(2000);
+							driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+							//Thread.sleep(1000);
 						   depaListNextbtn.click(); 
 						}
 					} catch (Exception e2) {
 						System.out.println("it enter into second catch block");
 						depaListpreviousbtn.click();
+						e2.printStackTrace();
 						// TODO: handle exception
 					}
 			}
@@ -157,23 +166,29 @@ public class ItemsPage extends TestBase{
 		
 		//depaSelect.click();
 		depaSelectOk.click();
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//Thread.sleep(1000);
 		cateBrowse.click();
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//Thread.sleep(3000);
 		try {  
        		System.out.println(CategoryName);
-    		driver.findElement(By.xpath("//td[text()='"+CategoryName+"']")).click();
+       		Thread.sleep(3000);
+    		//driver.findElement(By.xpath("//td[text()='"+CategoryName+"']")).click();
+    		driver.findElement(By.xpath("//div[@id='categoryGrid']//div[@class='k-grid-content']//td[text()='"+CategoryName+"']")).click();
+    		//driver.findElement(By.xpath(".//*[@id='categoryGrid']/div[3]/table/tbody/tr[5]/td[3]")).click();
            	System.out.println("it enter into for loop ");   
 			} catch (Exception e) {
 				    System.out.println("it enter into catch block");
-				    depaListNextbtn.click();
-				    //e.printStackTrace();
+				   // depaListNextbtn.click();
+				    e.printStackTrace();
 			}
         //cateSelect.click();
 		cateSelectOk.click();
 		itemPrice.sendKeys(price);
 		itemCost.sendKeys(cost);
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//Thread.sleep(1000);
 		itemSaveAndCloseBtn.click();
 	
 		//addnewItemBtn.click();

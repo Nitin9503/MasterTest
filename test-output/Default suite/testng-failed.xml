@@ -3,12 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.master.qa.testcases.CategoryPageTest">
+      <class name="com.master.qa.testcases.DepartMentPageTest">
         <methods>
-          <include name="AddNewCateDataTest"/>
+          <include name="depaCancelClickTest"/>
           <include name="setUp"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.master.qa.testcases.CategoryPageTest -->
+      </class> <!-- com.master.qa.testcases.DepartMentPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

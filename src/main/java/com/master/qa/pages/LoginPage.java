@@ -38,10 +38,11 @@ public class LoginPage extends TestBase {
 		return loginLogo.isDisplayed();
 	}
 	
-	public HomePage login(String usn, String pwd ){
+	public HomePage login(String usn, String pwd ) throws InterruptedException{
 		username.sendKeys(usn);
 		password.sendKeys(pwd);
 		loginbtn.click();
+		Thread.sleep(2000);
 		return new HomePage();
 		
 	}
